@@ -6,6 +6,7 @@ let user = new User(
  {
  nomeCompleto: req.body.nomeCompleto,
  email: req.body.email,
+ senha: req.body.senha,
  celular: req.body.celular,
  endereco: req.body.endereco,
  voluntario: req.body.voluntario
