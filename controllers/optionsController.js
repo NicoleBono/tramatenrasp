@@ -3,30 +3,37 @@ var router = express.Router();
 const mongoose = require('mongoose');
 const Options = mongoose.model('Options');
 
-router.get('/', (req, res) => {
-    res.render("option/addOrEdit", {
-        viewTitle: "Insert Option"
+
+exports.create = function (req, res, next) {
+let options = new Options(
+ {
+ nomeCompleto: req.body.nomeCompleto,
+ email: req.body.email,
+ celular: req.body.celular,
+ endereco: req.body.endereco,
+ descrição: req.body.descricao,
+ site: req.body.redesSociais,
+ voluntarios: req.body.voluntarios,
+ }
+ );
+ options.save(function (err) {
+if (err) {
+return next(err);
+ }
+ res.send('Registo de opções criado com sucesso')
+ })
+};
+
+exports.details = (req, res) => {
+  Options.find()
+    .sort({ name: -1 })
+    .then((users) => {
+      res.status(200).send(users);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error Occured",
+      });
     });
-});
+};
 
-router.post('/', (req, res) => {
-    if (req.body._id == '')
-        insertRecord(req, res);
-        else
-        updateRecord(req, res);
-});
-
-router.get('/list', (req, res) => {
-    Options.find((err, docs) => {
-        if (!err) {
-            res.render("options/list", {
-                list: docs
-            });
-        }
-        else {
-            console.log('Error in retrieving options list :' + err);
-        }
-    });
-});
-
-module.exports = router;

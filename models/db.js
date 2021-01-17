@@ -6,3 +6,5 @@ mongoose.connect('mongodb://localhost:27017/CCR', { useNewUrlParser: true }, (er
 });
 
 require('./user.model');
+require('./options.model');
+require('./contato.model');

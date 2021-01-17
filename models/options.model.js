@@ -1,20 +1,26 @@
 const mongoose = require('mongoose');
 
 var optionsSchema = new mongoose.Schema({
-    educacao: {
+    nomeCompleto: {
         type: String,
     },
-    equipamentosCulturais: {
+    email: {
         type: String
     },
-    atividadesCulturais: {
+    celular: {
         type: String
     },
-    agentesCulturais: {
+    endereco: {
         type: String
     },
-    pulbicoGeral: {
+    descrição: {
         type: String
+    },
+     site: {
+        type: String
+    },
+     voluntarios: {
+        type: Boolean
     }
 });
 

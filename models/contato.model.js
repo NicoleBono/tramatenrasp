@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var userSchema = new mongoose.Schema({
+var contatoSchema = new mongoose.Schema({
     nomeCompleto: {
         type: String,
         required: 'This field is required.'
@@ -8,14 +8,9 @@ var userSchema = new mongoose.Schema({
     email: {
         type: String
     },
-    celular: {
+    mensagem: {
         type: String
     },
-    endereco: {
-        type: String
-    },
-    voluntario: {
-        type: Boolean}
 });
 
 
@@ -26,4 +21,4 @@ userSchema.path('email').validate((val) => {
     return emailRegex.test(val);
 }, 'Invalid e-mail.');
 
-mongoose.model('User', userSchema);
+mongoose.model('Contato', contatoSchema);

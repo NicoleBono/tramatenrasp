@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
 const Contato = mongoose.model('Contato');
 
 exports.create = function (req, res, next) {
@@ -7,24 +6,22 @@ let user = new User(
  {
  nomeCompleto: req.body.nomeCompleto,
  email: req.body.email,
- celular: req.body.celular,
- endereco: req.body.endereco,
- voluntario: req.body.voluntario
+ mensagem: req.body.mensagem,
  }
  );
  user.save(function (err) {
 if (err) {
 return next(err);
  }
- res.send('Registo de usuario criado com sucesso')
+ res.send('Registo de mensagem criado com sucesso')
  })
 }
 
 exports.details = (req, res) => {
-  User.find()
+  Contato.find()
     .sort({ name: -1 })
-    .then((users) => {
-      res.status(200).send(users);
+    .then((contato) => {
+      res.status(200).send(contato);
     })
     .catch((err) => {
       res.status(500).send({
