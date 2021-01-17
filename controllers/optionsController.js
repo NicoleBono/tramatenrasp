@@ -27,8 +27,8 @@ return next(err);
 exports.details = (req, res) => {
   Options.find()
     .sort({ name: -1 })
-    .then((users) => {
-      res.status(200).send(users);
+    .then((options) => {
+      res.status(200).send(options);
     })
     .catch((err) => {
       res.status(500).send({

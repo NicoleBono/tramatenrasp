@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const Contato = mongoose.model('Contato');
 
 exports.create = function (req, res, next) {
 let user = new User(

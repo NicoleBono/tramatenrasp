@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Contato = mongoose.model('Contato');
 
 exports.create = function (req, res, next) {
-let user = new User(
+let user = new Contato(
  {
  nomeCompleto: req.body.nomeCompleto,
  email: req.body.email,
